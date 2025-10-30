@@ -6,6 +6,7 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
         profile(params) {
             return {
                 username: params.username as string,
+                color: params.color as string,
                 isAnonymous: true
             }
         }

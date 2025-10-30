@@ -4,13 +4,14 @@ import { query } from './_generated/server'
 export const currentUser = query({
     handler: async (ctx) => {
         const userId = await getAuthUserId(ctx)
-        if (!userId) return
+        if (!userId) return null
 
         const user = await ctx.db.get(userId)
-        if (!user) return
+        if (!user) return null
 
         return {
-            username: user?.username
+            username: user.username,
+            color: user.color
         }
     }
 })

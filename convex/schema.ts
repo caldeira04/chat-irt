@@ -9,7 +9,8 @@ export default defineSchema({
     ...authTables,
     users: defineTable({
         username: v.string(),
-        isAnonymous: v.boolean()
+        isAnonymous: v.boolean(),
+        color: v.string()
     }),
     messages: defineTable({
         userId: v.id("users"),

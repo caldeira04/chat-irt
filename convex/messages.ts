@@ -15,6 +15,7 @@ export const getMessages = query({
                 return {
                     message: m.text,
                     user: user?.username,
+                    color: user?.color,
                     createdAt: m._creationTime
                 }
 
