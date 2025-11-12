@@ -9,21 +9,23 @@ import { useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
 import SignInForm from "./components/sign-in";
 import SignOutButton from "./components/sign-out.tsx"
+import Input from "./components/input.tsx";
 
 export default function App() {
     const currentUser = useQuery(api.user.currentUser)
 
     return (
-        <>
+        <div className="overflow-y-clip">
             <Authenticated>
-                <div className="relative h-screen w-full flex flex-col">
-                    <div className="bg-black top-0 border-b-1 border-white sticky h-24 px-4 flex w-full items-center justify-between">
-                        <p>logado atualmente como: {currentUser?.username}</p>
+                <div className="flex pt-4 h-screen overflow-y-clip">
+                    <div className="w-1/3 flex flex-col gap-4 items-center">
+                        <p>logado atualmente como: <strong>{currentUser?.username}</strong></p>
                         <SignOutButton />
                     </div>
-                    <main className="flex-1">
+                    <div className="flex w-full justify-between">
                         <Chat />
-                    </main>
+                        <Input />
+                    </div>
                 </div>
             </Authenticated>
             <Unauthenticated>
@@ -31,7 +33,7 @@ export default function App() {
                     <SignInForm />
                 </div>
             </Unauthenticated>
-        </>
+        </div>
     );
 }
 
