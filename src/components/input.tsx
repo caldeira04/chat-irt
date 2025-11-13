@@ -10,6 +10,10 @@ export default function Input() {
     const [message, setMessage] = useState<string>("")
     const inputRef = useRef<HTMLTextAreaElement>(null)
     function handleSubmit() {
+        if (message.length > 140) {
+            alert("mensagem deve ser menor que 140 caracteres")
+            return
+        }
         createMessage({
             message
         })

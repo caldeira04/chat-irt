@@ -7,7 +7,7 @@ export default function Chat() {
 
     return (
         <div className="w-2/3 flex flex-col justify-between h-full">
-            <div className="w-full flex flex-col overflow-y-hidden flex-1 justify-end">
+            <div className="w-full flex flex-col overflow-y-scroll flex-1 justify-end">
                 {messages?.length === 0 && (
                     <p className="py-8">não existem mensagens encontradas</p>
                 )}
@@ -15,11 +15,9 @@ export default function Chat() {
                     <div key={m.createdAt} className="w-full flex justify-between py-4 px-6">
                         <p className="flex self-start gap-4">
                             <span style={{ color: `${m.color}` }} className="font-bold leading-10">{m.user}</span>
-                            <pre className="leading-10">
-                                <span>{m.message}</span>
-                            </pre>
+                            <span className="leading-10 break-all">{m.message}</span>
                         </p>
-                        <p className="text-xs text-muted-foreground">{formatDistanceToNow(new Date(m.createdAt), { addSuffix: true })}</p>
+                        <p className="text-xs leading-10 text-muted-foreground">{formatDistanceToNow(new Date(m.createdAt), { addSuffix: true })}</p>
                     </div>
                 ))}
             </div>
